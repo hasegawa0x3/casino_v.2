@@ -9,7 +9,7 @@
                 <q-img src="/imgs/brand.png" class="w-full sm:w-1/2"/>
             </div>
         </div>
-        <div style="background-color:#1A2C38">
+        <div>
             <div class="w-[90%] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 mt-3">
                 <div>
                     <div class="py-3 flex items-center">
@@ -42,10 +42,11 @@
                 </div>
                 <q-btn class="rounded-md px-5 py-3 bg-gray-700 text-white" no-caps label="Buy Crypto" />
             </div>
-            <div class=" relative w-[90%] mx-auto rounded-md p-5 m-8 bg-[#0F212E] h-[270px] overflow-y-hidden">
-                <p class="text-white text-md">Bet on your favourite teams, players and leagues from all around the world on our sports betting platform. Gamble on a wide range of sports betting options and markets for live sports across MMA, Basketball, Soccer and more for an unbeatable sports betting experience.Bet on your favourite teams, players and leagues from all around the world on our sports betting platform. Gamble on a wide range of sports betting options and markets for live sports across MMA, Basketball, Soccer and more for an unbeatable sports betting experience.Bet on your favourite teams, players and leagues from all around the world on our sports betting platform. Gamble on a wide range of sports betting options and markets for live sports across MMA, Basketball, Soccer and more for an unbeatable sports betting experience.Bet on your favourite teams, players and leagues from all around the world on our sports betting platform. Gamble on a wide range of sports betting options and markets for live sports across MMA, Basketball, Soccer and more for an unbeatable sports betting experience.Bet on your favourite teams, players and leagues from all around the world on our sports betting platform. Gamble on a wide range of sports betting options and markets for live sports across MMA, Basketball, Soccer and more for an unbeatable sports betting experience.Bet on your favourite teams, players and leagues from all around the world on our sports betting platform. Gamble on a wide range of sports betting options and markets for live sports across MMA, Basketball, Soccer and more for an unbeatable sports betting experience.</p>
-                <div class="absolute left-0 top-0 w-full h-full bg-gradient-to-t from-[#0F212E] to-[#0F212E00]"></div>
-                <q-btn class="absolute left-1/2 bottom-5 -translate-x-1/2 rounded-md px-5 py-2 bg-gray-700 text-white" no-caps label="Show More" />
+            <div class="w-[90%] mx-auto">
+                <History />
+            </div>
+            <div class="w-[90%] mx-auto">
+                <Description />
             </div>
         </div>
     </q-page>

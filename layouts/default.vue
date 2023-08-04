@@ -1,12 +1,12 @@
 <template>
-    <q-layout view="lHh LpR fFf">
+    <q-layout view="LHh Lpr fFf">
         <!-- Header -->
         <HeaderComponent />
         <!-- SideBar -->
         <SideBarComponent />
         
         <!-- Container -->
-        <q-page-container style="background-color: #1A2C38;">
+        <q-page-container style="background-color: #1A2C38;" class="overflow-x-hidden">
                 <NuxtPage />
                 <!-- <PageFooter/> 
                 <MobilePageFooter />
@@ -14,14 +14,13 @@
                 <!-- Footer -->
                 <div
                     class="text-sm font-normal text-center p-3"
-                    :class="'sm:pb-3 pb-[120px]'"
                     style="background-color: #151515; color: #7d8396;"
                     >Copyright 2023 New Casino All Right Reserved.
                 </div>
         </q-page-container> 
 
         <HeaderLogIn />
-        <SignUp />
+        <HeaderSignUp />
         <!-- <SearchDialog />
         <AvatarDialog />
         <VerifyEmail />
@@ -31,5 +30,25 @@
 <script setup lang="ts">
 import HeaderComponent from '~~/components/header/HeaderComponent.vue';
 import SideBarComponent from '~~/components/sidebar/SidebarComponent.vue';
-import SignUp from '~~/components/header/SignUp.vue';
+import { useStore } from 'vuex';
+import { useQuasar } from 'quasar'
+
+const store = useStore();
+const not = useQuasar();
+
+watch(
+    ()=>store.state.notification,
+    ()=>{not.notify({
+            message: store.state.notification.type,
+            caption: store.state.notification.message,
+            icon: store.state.notification.type == 'Success'?'done':'info',
+            iconColor: store.state.notification.type == 'Success'?'green':'red',
+            color: 'white',
+            textColor: 'dark',
+            position: 'top-right',
+            progress:true,
+            multiLine: true,
+            timeout: 1500,}) 
+});
+
 </script>

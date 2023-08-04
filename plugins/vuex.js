@@ -6,6 +6,10 @@ const store = createStore({
             onLogin: false,
             onSignup: false,
             title: '',
+
+
+            notification: {},           // notification(type,message)
+
         };
     },
     mutations: {
@@ -13,6 +17,8 @@ const store = createStore({
         handleLogin(state, payload) {state.onLogin = payload; },        
         handleSignup(state, payload) {state.onSignup = payload; },        
         handleTitle(state, payload) {state.title = payload; },        
+        handleNotification(state, payload) { state.notification = payload; },
+    
     },
 });
 

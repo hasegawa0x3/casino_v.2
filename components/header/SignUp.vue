@@ -15,7 +15,7 @@
                         <p class="text-red text-xs py-1">Invalid Email Address</p>
                     </div>
                     <q-input
-                        v-model="loginInfo.email"
+                        v-model="signup.username.value"
                         dark
                         dense
                         outlined
@@ -28,7 +28,7 @@
                         <p class="text-red text-xs py-1">Invalid UserName</p>
                     </div>
                     <q-input
-                        v-model="loginInfo.email"
+                        v-model="signup.email.value"
                         dark
                         dense
                         outlined
@@ -41,7 +41,7 @@
                         <p class="text-red text-xs py-1">Password Incorrect</p>
                     </div>
                     <q-input
-                        v-model="loginInfo.pass"
+                        v-model="signup.password.value"
                         :type="visibility ? 'text' : 'password'"
                         dark
                         dense
@@ -55,7 +55,7 @@
                         <p class="text-red text-xs py-1">Password Doesn't Match</p>
                     </div>
                     <q-input
-                        v-model="loginInfo.pass"
+                        v-model="signup.passwordConform.value"
                         :type="visibility ? 'text' : 'password'"
                         dark
                         dense
@@ -63,7 +63,7 @@
                         class="pb-3"
                     ><q-icon @click="setVisibility" :name="visibility ? 'visibility_off' : 'visibility'" size="sm" class=" text-gray-400 hover:text-white my-auto"></q-icon></q-input>
                 </div>
-                <q-btn @click="Login" color="primary" label="Sign In" class="w-full text-lg my-3"/>
+                <q-btn @click="Signup" color="primary" label="Sign In" class="w-full text-lg my-3"/>
                 <p @click="()=>{store.commit('handleLogin', true); store.commit('handleSignup', false);}" class="text-center text-sm text-gray-300 hover:text-white cursor-pointer">Already have an Account? Sign In!</p>
             </q-card-section>
         </q-card>
@@ -72,16 +72,25 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import {useStore} from "vuex";
+import {SignUp} from '~~/actions/auth'
+
 const store = useStore();
 const visibility = ref(false);
-let loginInfo = {
+let signup = {
+    username: ref(''),
     email: ref(''),
-    pass: ref(''),
+    password: ref(''),
+    passwordConform: ref(''),
 }
 const setVisibility = () => {
     visibility.value = !visibility.value;
 }
-const Login = () => {
-
+const Signup = () => {
+    let userdata = {};
+    Object.keys(signup).map(item => {
+        userdata = {...userdata, [item] : signup[item].value};
+    });
+    // userdata = {...userdata, 'visitorId':store.state.visitorId, 'click_id': Cookies.get('click_id'), 'promo': Cookies.get('promo')};
+    SignUp(userdata, store);
 }
 </script>
